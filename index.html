@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Advance Tatva – An Ayurvedic Health Blessings</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --deep: #0f2218;
+    --sage: #4a7c59;
+    --herb: #6aaa7a;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --cream: #faf6ef;
+    --warm: #f3ead8;
+    --text: #1c1c1c;
+    --muted: #6b6b6b;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  /* ─── ANNOUNCEMENT BAR ─── */
+  .ann-bar {
+    background: var(--forest);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .ann-bar span { color: var(--white); }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky; top: 0; z-index: 999;
+    background: rgba(250,246,239,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,124,89,0.15);
+    padding: 0 5%;
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px; max-width: 1300px; margin: 0 auto;
+  }
+  .logo { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+  .logo-main { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--forest); letter-spacing: -0.02em; }
+  .logo-sub { font-size: 10px; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; font-weight: 500; }
+  nav { display: flex; gap: 32px; list-style: none; }
+  nav a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--text); letter-spacing: 0.02em; transition: color .2s; position: relative; padding-bottom: 3px; }
+  nav a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--gold); transition:width .3s; }
+  nav a:hover { color: var(--forest); }
+  nav a:hover::after { width: 100%; }
+  .header-actions { display: flex; align-items: center; gap: 16px; }
+  .cart-btn {
+    display: flex; align-items: center; gap: 7px;
+    background: var(--forest); color: var(--white);
+    border: none; cursor: pointer; padding: 10px 20px;
+    border-radius: 50px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.03em; transition: all .25s;
+  }
+  .cart-btn:hover { background: var(--sage); transform: translateY(-1px); }
+  .cart-count {
+    background: var(--gold); color: var(--forest);
+    border-radius: 50%; width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--forest); border-radius: 2px; transition: all .3s; }
+
+  /* ─── HERO SLIDER ─── */
+  .hero { position: relative; overflow: hidden; height: 88vh; min-height: 560px; }
+  .slides { display: flex; height: 100%; transition: transform .8s cubic-bezier(.77,0,.18,1); }
+  .slide {
+    min-width: 100%; height: 100%; position: relative;
+    display: flex; align-items: center;
+  }
+  .slide-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+  .slide-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(10,25,18,.72) 0%, rgba(10,25,18,.35) 55%, transparent 100%);
+  }
+  .slide-1 .slide-bg { background: linear-gradient(135deg, #0a2a18 0%, #1a4a2a 40%, #2a6040 100%); }
+  .slide-2 .slide-bg { background: linear-gradient(135deg, #1a2a0a 0%, #2a4010 40%, #3a5520 100%); }
+  .slide-3 .slide-bg { background: linear-gradient(135deg, #1a1a0a 0%, #3a3010 40%, #504020 100%); }
+
+  /* Decorative leaf patterns */
+  .slide-deco {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    width: 420px; height: 420px; opacity: 0.12;
+    background: radial-gradient(circle, var(--herb) 0%, transparent 70%);
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    animation: morphBlob 8s ease-in-out infinite;
+  }
+  @keyframes morphBlob {
+    0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+    50% { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+  }
+  .slide-product-visual {
+    position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+    width: 320px; height: 320px;
+    background: radial-gradient(ellipse at 40% 40%, rgba(201,168,76,.25) 0%, transparent 70%);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .slide-product-visual .pill-icon {
+    font-size: 120px; filter: drop-shadow(0 20px 40px rgba(0,0,0,.4));
+    animation: floatIcon 4s ease-in-out infinite;
+  }
+  @keyframes floatIcon {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+  .slide-content {
+    position: relative; z-index: 2; padding: 0 8% 0 8%;
+    max-width: 680px;
+  }
+  .slide-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,.18); border: 1px solid rgba(201,168,76,.4);
+    color: var(--gold-light); padding: 6px 14px; border-radius: 50px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .slide-badge::before { content: '✦'; }
+  .slide-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 78px);
+    font-weight: 700; line-height: 1.08;
+    color: var(--white); margin-bottom: 20px;
+  }
+  .slide-content h1 em { color: var(--gold-light); font-style: italic; }
+  .slide-content p {
+    color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.7;
+    margin-bottom: 36px; max-width: 480px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--forest);
+    padding: 14px 32px; border-radius: 50px; text-decoration: none;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.04em;
+    transition: all .25s; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.4); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 14px 32px; border-radius: 50px; text-decoration: none;
+    font-weight: 600; font-size: 14px; letter-spacing: 0.04em;
+    transition: all .25s; border: 1.5px solid rgba(255,255,255,.5);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
+  .slide-dots {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 10;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.35); cursor: pointer; transition: all .3s;
+    border: none;
+  }
+  .dot.active { background: var(--gold); width: 28px; border-radius: 4px; }
+  .slide-arrows {
+    position: absolute; bottom: 24px; right: 8%; display: flex; gap: 12px; z-index: 10;
+  }
+  .arrow-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,.4); background: rgba(255,255,255,.1);
+    color: white; cursor: pointer; font-size: 16px; transition: all .25s;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px);
+  }
+  .arrow-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--forest); }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--forest); padding: 24px 5%;
+  }
+  .trust-inner {
+    display: flex; justify-content: space-around; align-items: center;
+    flex-wrap: wrap; gap: 20px; max-width: 1300px; margin: 0 auto;
+  }
+  .trust-item { display: flex; align-items: center; gap: 12px; color: var(--white); }
+  .trust-icon { font-size: 26px; }
+  .trust-text { font-size: 13px; line-height: 1.4; }
+  .trust-text strong { display: block; font-size: 15px; color: var(--gold-light); }
+
+  /* ─── SECTION HEADER ─── */
+  .sec-header { text-align: center; margin-bottom: 56px; }
+  .sec-tag {
+    display: inline-block; background: rgba(74,124,89,.12);
+    color: var(--sage); border: 1px solid rgba(74,124,89,.25);
+    padding: 5px 16px; border-radius: 50px; font-size: 12px;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .sec-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+    color: var(--forest); line-height: 1.15;
+  }
+  .sec-header h2 em { color: var(--gold); font-style: italic; }
+  .sec-header p { color: var(--muted); font-size: 15px; max-width: 540px; margin: 14px auto 0; line-height: 1.7; }
+
+  /* ─── PRODUCTS ─── */
+  .products-section { padding: 90px 5%; background: var(--cream); }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px; max-width: 1300px; margin: 0 auto;
+  }
+  .product-card {
+    background: var(--white); border-radius: 20px;
+    overflow: hidden; position: relative;
+    transition: all .35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 2px 16px rgba(26,58,42,.07);
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(26,58,42,.16); }
+  .product-badge {
+    position: absolute; top: 16px; left: 16px; z-index: 2;
+    background: var(--gold); color: var(--forest);
+    padding: 4px 12px; border-radius: 50px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  }
+  .product-badge.new { background: var(--herb); color: var(--white); }
+  .product-wishlist {
+    position: absolute; top: 16px; right: 16px; z-index: 2;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.9); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; transition: all .25s;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+  .product-wishlist:hover { background: #fff0f0; transform: scale(1.1); }
+  .product-img {
+    height: 220px; background: linear-gradient(135deg, var(--warm) 0%, #e8f5ec 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; position: relative; overflow: hidden;
+    transition: all .4s;
+  }
+  .product-card:hover .product-img { background: linear-gradient(135deg, #e0f0e8 0%, #d8eee0 100%); }
+  .product-img::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(transparent, rgba(255,255,255,.5));
+  }
+  .product-body { padding: 22px 22px 20px; }
+  .product-category {
+    font-size: 11px; color: var(--sage); font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 700; color: var(--forest);
+    margin-bottom: 8px; line-height: 1.2;
+  }
+  .product-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .product-benefits { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .benefit-tag {
+    font-size: 11px; background: rgba(74,124,89,.1); color: var(--sage);
+    padding: 3px 10px; border-radius: 50px; font-weight: 500;
+  }
+  .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 16px; }
+  .stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+  .rating-text { font-size: 12px; color: var(--muted); }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { }
+  .price-old { font-size: 13px; color: var(--muted); text-decoration: line-through; }
+  .price-new { font-size: 22px; font-weight: 700; color: var(--forest); font-family: 'Cormorant Garamond', serif; }
+  .price-save { font-size: 11px; color: var(--herb); font-weight: 600; }
+  .add-cart-btn {
+    background: var(--forest); color: var(--white);
+    border: none; cursor: pointer; padding: 11px 20px;
+    border-radius: 50px; font-size: 13px; font-weight: 600;
+    transition: all .25s; display: flex; align-items: center; gap: 6px;
+    letter-spacing: 0.02em;
+  }
+  .add-cart-btn:hover { background: var(--sage); transform: scale(1.04); }
+
+  /* ─── WHY US ─── */
+  .why-section {
+    padding: 90px 5%;
+    background: var(--forest);
+    position: relative; overflow: hidden;
+  }
+  .why-section::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(106,170,122,.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .why-section .sec-header h2 { color: var(--white); }
+  .why-section .sec-header p { color: rgba(255,255,255,.6); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px; max-width: 1300px; margin: 0 auto;
+  }
+  .why-card {
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 18px; padding: 32px 24px; text-align: center;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,.08), transparent);
+    opacity: 0; transition: opacity .3s;
+  }
+  .why-card:hover { border-color: rgba(201,168,76,.4); transform: translateY(-4px); }
+  .why-card:hover::before { opacity: 1; }
+  .why-icon { font-size: 40px; margin-bottom: 16px; }
+  .why-title { color: var(--gold-light); font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .why-desc { color: rgba(255,255,255,.6); font-size: 13px; line-height: 1.6; }
+
+  /* ─── EXPERT SECTION ─── */
+  .expert-section { padding: 90px 5%; background: var(--warm); }
+  .expert-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 70px; align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .expert-img-wrap {
+    position: relative;
+  }
+  .expert-img-frame {
+    width: 100%; aspect-ratio: 4/5; border-radius: 24px;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 160px; position: relative; overflow: hidden;
+  }
+  .expert-img-frame::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 30%, rgba(201,168,76,.2), transparent);
+  }
+  .expert-badge-float {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--white); border-radius: 16px;
+    padding: 16px 20px; box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    text-align: center;
+  }
+  .expert-badge-float .num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--forest); display: block; }
+  .expert-badge-float .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .expert-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px); font-weight: 700;
+    color: var(--forest); line-height: 1.2; margin-bottom: 20px;
+  }
+  .expert-content p { color: var(--muted); font-size: 15px; line-height: 1.75; margin-bottom: 16px; }
+  .expert-creds { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .cred-item { display: flex; align-items: center; gap: 12px; }
+  .cred-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .cred-text { font-size: 14px; color: var(--forest); font-weight: 500; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-section { padding: 90px 5%; background: var(--cream); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px; max-width: 1300px; margin: 0 auto;
+  }
+  .testimonial-card {
+    background: var(--white); border-radius: 20px; padding: 28px;
+    box-shadow: 0 2px 16px rgba(26,58,42,.06);
+    transition: all .3s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,58,42,.12); }
+  .t-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .t-avatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest), var(--sage));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-weight: 700; font-size: 18px; flex-shrink: 0;
+  }
+  .t-name { font-weight: 700; font-size: 15px; color: var(--forest); }
+  .t-location { font-size: 12px; color: var(--muted); }
+  .t-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+  .t-quote { font-size: 14px; color: var(--muted); line-height: 1.7; font-style: italic; }
+  .t-product { margin-top: 14px; font-size: 12px; color: var(--sage); font-weight: 600; }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, var(--forest) 0%, #0d2a1a 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(201,168,76,.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 62px); font-weight: 700;
+    color: var(--white); line-height: 1.1; margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-section h2 em { color: var(--gold-light); font-style: italic; }
+  .cta-section p { color: rgba(255,255,255,.65); font-size: 16px; max-width: 500px; margin: 0 auto 36px; line-height: 1.7; position: relative; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--deep); padding: 64px 5% 0; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 48px; max-width: 1300px; margin: 0 auto; padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .footer-brand .logo-main { font-size: 30px; color: var(--white); margin-bottom: 4px; }
+  .footer-brand .logo-sub { color: var(--gold); }
+  .footer-brand p { color: rgba(255,255,255,.5); font-size: 13px; line-height: 1.7; margin-top: 16px; max-width: 280px; }
+  .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .footer-contact a { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.65); font-size: 13px; text-decoration: none; transition: color .2s; }
+  .footer-contact a:hover { color: var(--gold-light); }
+  .footer-col h4 { color: var(--gold-light); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col ul a { color: rgba(255,255,255,.55); font-size: 13px; text-decoration: none; transition: color .2s; }
+  .footer-col ul a:hover { color: var(--white); }
+  .certifications { display: flex; flex-direction: column; gap: 12px; }
+  .cert-badge {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px; padding: 12px 16px;
+  }
+  .cert-icon { font-size: 22px; }
+  .cert-text { font-size: 12px; color: rgba(255,255,255,.7); font-weight: 500; }
+  .footer-bottom {
+    max-width: 1300px; margin: 0 auto;
+    padding: 20px 0; display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+    color: rgba(255,255,255,.35); font-size: 12px;
+  }
+  .payment-icons { display: flex; gap: 10px; align-items: center; }
+  .pay-icon {
+    background: rgba(255,255,255,.1); border-radius: 6px;
+    padding: 4px 10px; font-size: 11px; font-weight: 700;
+    color: rgba(255,255,255,.6); letter-spacing: 0.05em;
+  }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 1000;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,.5);
+    transition: all .25s;
+    animation: pulse-green 2.5s infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  @keyframes pulse-green {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,.5); }
+    50% { box-shadow: 0 4px 36px rgba(37,211,102,.75); }
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1200;
+    background: var(--forest); transform: translateX(-100%);
+    transition: transform .35s ease; display: flex; flex-direction: column;
+    padding: 80px 32px 40px;
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav-close {
+    position: absolute; top: 20px; right: 24px;
+    background: none; border: none; color: var(--white);
+    font-size: 28px; cursor: pointer;
+  }
+  .mobile-nav a {
+    color: var(--white); text-decoration: none; font-size: 24px;
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1);
+    transition: color .2s;
+  }
+  .mobile-nav a:hover { color: var(--gold-light); }
+
+  /* ─── COUNTER ANIMATION ─── */
+  .stats-bar {
+    background: var(--warm); padding: 56px 5%;
+    border-top: 1px solid rgba(74,124,89,.15);
+    border-bottom: 1px solid rgba(74,124,89,.15);
+  }
+  .stats-inner {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; max-width: 1100px; margin: 0 auto; text-align: center;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 700; color: var(--forest);
+    line-height: 1; display: block;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 6px; letter-spacing: 0.04em; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav, .header-actions .cart-btn { display: none; }
+    .hamburger { display: flex; }
+    .expert-inner { grid-template-columns: 1fr; }
+    .expert-img-wrap { max-width: 400px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .slide-content { padding: 0 6%; }
+    .slide-product-visual { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .trust-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── PRODUCT MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,.6); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--white); border-radius: 24px; max-width: 700px; width: 100%;
+    max-height: 90vh; overflow-y: auto; padding: 36px;
+    transform: scale(.96); transition: transform .3s;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal-close {
+    float: right; background: none; border: none; font-size: 22px;
+    cursor: pointer; color: var(--muted); padding: 4px;
+    transition: color .2s;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-img { width: 100%; height: 220px; background: linear-gradient(135deg, var(--warm), #e8f5ec); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 100px; margin-bottom: 24px; }
+  .modal-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--forest); }
+  .modal-price { font-size: 24px; font-weight: 700; color: var(--forest); margin: 8px 0 16px; }
+  .modal-price span { font-size: 16px; color: var(--muted); text-decoration: line-through; margin-right: 8px; font-weight: 400; }
+  .modal-desc { color: var(--muted); line-height: 1.7; font-size: 15px; margin-bottom: 20px; }
+  .modal-benefits { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .modal-benefits li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--text); }
+  .modal-benefits li::before { content: '✓'; color: var(--herb); font-weight: 700; flex-shrink: 0; }
+  .modal-add-btn {
+    width: 100%; padding: 16px; background: var(--forest); color: var(--white);
+    border: none; border-radius: 50px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: all .25s; letter-spacing: 0.04em;
+  }
+  .modal-add-btn:hover { background: var(--sage); }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--forest); color: var(--white);
+    padding: 14px 28px; border-radius: 50px; font-size: 14px; font-weight: 600;
+    z-index: 3000; opacity: 0; transition: all .3s; white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,.25);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="ann-bar">
+  🌿 Free shipping on orders above ₹699 &nbsp;|&nbsp; <span>100% Authentic Ayurvedic Products</span> &nbsp;|&nbsp; FSSAI Approved &nbsp;|&nbsp; 10,000+ Happy Customers
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">
+      <span class="logo-main">Advance Tatva</span>
+      <span class="logo-sub">Ayurvedic Health Blessings</span>
+    </a>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#expert">Expert</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Cart <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div class="hamburger" onclick="openMobileNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <a href="#" onclick="closeMobileNav()">Home</a>
+  <a href="#products" onclick="closeMobileNav()">Products</a>
+  <a href="#why-us" onclick="closeMobileNav()">Why Us</a>
+  <a href="#expert" onclick="closeMobileNav()">Expert</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- Hero Slider -->
+<section class="hero" id="home">
+  <div class="slides" id="slidesTrack">
+    <!-- Slide 1 -->
+    <div class="slide slide-1">
+      <div class="slide-bg"></div>
+      <div class="slide-deco"></div>
+      <div class="slide-product-visual"><div class="pill-icon">💊</div></div>
+      <div class="slide-content">
+        <div class="slide-badge">Bestseller – Ashwagandha Tablets</div>
+        <h1>Strength from <em>Ancient Wisdom</em></h1>
+        <p>Pure Ashwagandha tablets crafted with traditional Ayurvedic methods. Boost energy, reduce stress, and reclaim your vitality naturally.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-primary">Shop Now →</a>
+          <a href="#why-us" class="btn-outline">Why Advance Tatva</a>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide slide-2">
+      <div class="slide-bg"></div>
+      <div class="slide-deco"></div>
+      <div class="slide-product-visual"><div class="pill-icon">🌿</div></div>
+      <div class="slide-content">
+        <div class="slide-badge">New Launch – Diabetic Care Capsule</div>
+        <h1>Balance Your <em>Blood Sugar</em> Naturally</h1>
+        <p>Our Diabetic Care Capsule blends powerful Ayurvedic herbs to support healthy glucose levels — without side effects.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-primary">Explore Products →</a>
+          <a href="#expert" class="btn-outline">Meet Our Expert</a>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide slide-3">
+      <div class="slide-bg"></div>
+      <div class="slide-deco"></div>
+      <div class="slide-product-visual"><div class="pill-icon">🫙</div></div>
+      <div class="slide-content">
+        <div class="slide-badge">Advance Tatva – Ahmedabad, Gujarat</div>
+        <h1>Live Longer. <em>Live Painlessly.</em></h1>
+        <p>Science-backed Ayurvedic formulations for a longer, healthier, pain-free life. Trusted by thousands across India.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn-primary">View All Products →</a>
+          <a href="#contact" class="btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dots -->
+  <div class="slide-dots">
+    <button class="dot active" onclick="goSlide(0)"></button>
+    <button class="dot" onclick="goSlide(1)"></button>
+    <button class="dot" onclick="goSlide(2)"></button>
+  </div>
+  <!-- Arrows -->
+  <div class="slide-arrows">
+    <button class="arrow-btn" onclick="prevSlide()">←</button>
+    <button class="arrow-btn" onclick="nextSlide()">→</button>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <span class="trust-icon">🏆</span>
+      <div class="trust-text"><strong>FSSAI Certified</strong>Safe & Approved</div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🌿</span>
+      <div class="trust-text"><strong>100% Natural</strong>No Chemicals</div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🚚</span>
+      <div class="trust-text"><strong>Fast Delivery</strong>Pan India Shipping</div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🔄</span>
+      <div class="trust-text"><strong>Easy Returns</strong>7 Day Policy</div>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon">🔒</span>
+      <div class="trust-text"><strong>Secure Payments</strong>UPI · Cards · COD</div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num" data-target="10000">0</span>
+      <div class="stat-label">Happy Customers</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="15">0</span>
+      <div class="stat-label">Ayurvedic Products</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="5">0</span>
+      <div class="stat-label">Years of Expertise</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="200">0</span>
+      <div class="stat-label">Cities Delivered</div>
+    </div>
+  </div>
+</div>
+
+<!-- Products Section -->
+<section class="products-section" id="products">
+  <div class="sec-header reveal">
+    <div class="sec-tag">Our Products</div>
+    <h2>Healing Power of <em>Ancient Herbs</em></h2>
+    <p>Every product is crafted using traditional Ayurvedic wisdom and modern quality standards — pure, potent, and trusted.</p>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <!-- Products injected by JS -->
+  </div>
+</section>
+
+<!-- Why Us -->
+<section class="why-section" id="why-us">
+  <div class="sec-header reveal">
+    <div class="sec-tag" style="background:rgba(201,168,76,.12);color:var(--gold-light);border-color:rgba(201,168,76,.3)">Why Choose Us</div>
+    <h2>The Advance Tatva <em>Difference</em></h2>
+    <p>We are committed to delivering the finest quality Ayurvedic products that are safe, effective, and affordable.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">🌱</div>
+      <div class="why-title">100% Natural Ingredients</div>
+      <div class="why-desc">Sourced from certified farms using traditional Ayurvedic farming practices. No synthetic additives.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🔬</div>
+      <div class="why-title">Lab Tested Quality</div>
+      <div class="why-desc">Each batch is tested in certified labs for purity, potency, and safety before reaching you.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">👨‍⚕️</div>
+      <div class="why-title">Expert Formulated</div>
+      <div class="why-desc">Formulas designed by experienced Ayurvedic doctors with deep knowledge of classical texts.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💰</div>
+      <div class="why-title">Affordable Wellness</div>
+      <div class="why-desc">Premium Ayurvedic products at prices everyone can afford. Health should not be a luxury.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">🚚</div>
+      <div class="why-title">Pan India Delivery</div>
+      <div class="why-desc">Fast, reliable delivery across 200+ cities. Orders dispatched within 24 hours.</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">💬</div>
+      <div class="why-title">Dedicated Support</div>
+      <div class="why-desc">Our wellness advisors are available to guide you on product usage and health queries.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Expert Section -->
+<section class="expert-section" id="expert">
+  <div class="expert-inner">
+    <div class="expert-img-wrap reveal">
+      <div class="expert-img-frame">🧑‍⚕️</div>
+      <div class="expert-badge-float">
+        <span class="num">5+</span>
+        <span class="label">Years Experience</span>
+      </div>
+    </div>
+    <div class="expert-content reveal">
+      <div class="sec-tag">Our Ayurvedic Expert</div>
+      <h2>Formulated by a Trusted <em>Ayurvedic Doctor</em></h2>
+      <p>All Advance Tatva products are developed under the guidance of our in-house Ayurvedic physician with deep expertise in traditional formulations and modern wellness science.</p>
+      <p>Our expert combines classical Ayurvedic principles with contemporary research to create products that deliver real, measurable results — safely and naturally.</p>
+      <div class="expert-creds">
+        <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">BAMS Graduate — Ayurvedic Medicine & Surgery</div></div>
+        <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">Specializes in digestive health, metabolic wellness, pain management</div></div>
+        <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">All formulations follow classical Ayurvedic texts</div></div>
+        <div class="cred-item"><div class="cred-dot"></div><div class="cred-text">Ahmedabad, Gujarat — serving local & national customers</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section" id="reviews">
+  <div class="sec-header reveal">
+    <div class="sec-tag">Customer Reviews</div>
+    <h2>Loved by <em>Thousands</em> Across India</h2>
+    <p>Real stories from real customers who transformed their health with Advance Tatva.</p>
+  </div>
+  <div class="testimonials-grid" id="testimonialsGrid">
+    <!-- Injected by JS -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Start Your <em>Wellness Journey</em> Today</h2>
+  <p>Join thousands of satisfied customers who chose the natural path to better health.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;">
+    <a href="#products" class="btn-primary" style="font-size:16px;padding:16px 40px;">Browse All Products →</a>
+    <a href="https://wa.me/919033246038" class="btn-outline" style="font-size:16px;padding:16px 40px;">💬 WhatsApp Us</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-main">Advance Tatva</span>
+        <span class="logo-sub">Ayurvedic Health Blessings</span>
+      </div>
+      <p>Your trusted partner for authentic Ayurvedic wellness. Crafted with care in Ahmedabad, Gujarat, for a longer, painless life.</p>
+      <div class="footer-contact">
+        <a href="tel:+919033246038">📞 +91 90332 46038</a>
+        <a href="mailto:info@advancetatva.com">✉️ info@advancetatva.com</a>
+        <a href="#">📍 L-5, Dev Siddhi, Sola Road, Ghatlodia, Ahmedabad – 380061</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#expert">Our Expert</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Certifications</h4>
+      <div class="certifications">
+        <div class="cert-badge"><span class="cert-icon">✅</span><span class="cert-text">FSSAI Approved</span></div>
+        <div class="cert-badge"><span class="cert-icon">🌿</span><span class="cert-text">100% Natural Ingredients</span></div>
+        <div class="cert-badge"><span class="cert-icon">🔬</span><span class="cert-text">Lab Tested & Certified</span></div>
+        <div class="cert-badge"><span class="cert-icon">🚫</span><span class="cert-text">Preservative Free</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Advance Tatva | All Rights Reserved | Ahmedabad, Gujarat</span>
+    <div class="payment-icons">
+      <span class="pay-icon">UPI</span>
+      <span class="pay-icon">GPay</span>
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">COD</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/919033246038?text=Hello%20I%20want%20to%20know%20more%20about%20Advance%20Tatva%20products" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Product Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-name" id="modalName"></div>
+    <div class="modal-price" id="modalPrice"></div>
+    <div class="modal-desc" id="modalDesc"></div>
+    <ul class="modal-benefits" id="modalBenefits"></ul>
+    <button class="modal-add-btn" id="modalAddBtn">Add to Cart — Order via WhatsApp</button>
+  </div>
+</div>
+
+<script>
+// ─── PRODUCTS DATA ───
+const products = [
+  {
+    id: 1,
+    name: "Ashwagandha Tablets",
+    category: "Immunity & Strength",
+    icon: "💊",
+    desc: "Pure Ashwagandha extract in tablet form. Boosts energy, reduces stress, improves immunity.",
+    benefits: ["Reduces stress & anxiety", "Boosts physical strength", "Improves sleep quality", "Enhances immunity", "Natural anti-inflammatory"],
+    oldPrice: 490, newPrice: 380, badge: "Sale",
+    rating: 4.5, reviews: 124
+  },
+  {
+    id: 2,
+    name: "Diabetic Care Capsule",
+    category: "Blood Sugar Support",
+    icon: "🌿",
+    desc: "Ayurvedic formulation to naturally support healthy blood glucose levels.",
+    benefits: ["Supports healthy blood sugar", "Improves insulin sensitivity", "Reduces sugar cravings", "Boosts pancreatic health", "No harmful side effects"],
+    oldPrice: 490, newPrice: 380, badge: "Sale",
+    rating: 4.2, reviews: 89
+  },
+  {
+    id: 3,
+    name: "Multivitamin Capsules",
+    category: "Daily Wellness",
+    icon: "🫙",
+    desc: "Complete daily nutrition with 20+ essential vitamins and minerals from natural sources.",
+    benefits: ["Complete daily nutrition", "Boosts energy & vitality", "Supports hair & skin", "Strengthens bones", "Improves concentration"],
+    oldPrice: 490, newPrice: 380, badge: "New",
+    rating: 4.4, reviews: 67
+  },
+  {
+    id: 4,
+    name: "Omega-3 Capsules",
+    category: "Heart & Brain Health",
+    icon: "🐟",
+    desc: "High-potency Omega-3 fatty acids for heart health, brain function, and joint support.",
+    benefits: ["Supports heart health", "Improves brain function", "Reduces joint pain", "Anti-inflammatory", "Improves skin glow"],
+    oldPrice: 490, newPrice: 380, badge: "Sale",
+    rating: 5.0, reviews: 52
+  },
+  {
+    id: 5,
+    name: "Ayurvedic Pain Oil",
+    category: "Pain Relief",
+    icon: "🧴",
+    desc: "Traditional herbal pain relief oil. Fast-acting formula for joint pain, muscle aches, and back pain.",
+    benefits: ["Fast joint pain relief", "Reduces muscle stiffness", "Improves circulation", "Natural herbs only", "No burning sensation"],
+    oldPrice: 299, newPrice: 230, badge: "Sale",
+    rating: 3.8, reviews: 103
+  },
+  {
+    id: 6,
+    name: "Triphala Churna",
+    category: "Digestive Health",
+    icon: "🌾",
+    desc: "Classic Ayurvedic digestive tonic. Cleanses the gut, improves digestion, and boosts metabolism.",
+    benefits: ["Improves digestion", "Natural gut cleansing", "Boosts metabolism", "Rich in antioxidants", "Supports weight management"],
+    oldPrice: 350, newPrice: 270, badge: "New",
+    rating: 4.6, reviews: 78
+  },
+  {
+    id: 7,
+    name: "Shilajit Resin",
+    category: "Energy & Stamina",
+    icon: "⚫",
+    desc: "Pure Himalayan Shilajit for energy, stamina, and male vitality. Potent and authentic.",
+    benefits: ["Boosts energy & stamina", "Improves male vitality", "Rich in fulvic acid", "Enhances recovery", "Anti-aging properties"],
+    oldPrice: 899, newPrice: 699, badge: "Premium",
+    rating: 4.8, reviews: 156
+  },
+  {
+    id: 8,
+    name: "Immunity Booster Kit",
+    category: "Combo Pack",
+    icon: "🎁",
+    desc: "Power combo of Ashwagandha + Multivitamin + Omega-3 for complete daily wellness.",
+    benefits: ["Complete immunity support", "3 product combo — save more", "Best value pack", "Expert recommended", "30-day supply"],
+    oldPrice: 1299, newPrice: 999, badge: "Combo",
+    rating: 4.7, reviews: 211
+  }
+];
+
+const testimonials = [
+  { name: "Priya Sharma", location: "Ahmedabad", initial: "P", stars: 5, quote: "I have been using the Ashwagandha tablets for 3 months. My energy levels are so much better and I feel less anxious. Genuine product from a trustworthy brand!", product: "Ashwagandha Tablets" },
+  { name: "Ramesh Patel", location: "Surat", initial: "R", stars: 5, quote: "The Diabetic Care Capsule has been a blessing. My doctor was surprised at the improvement in my sugar levels. Completely natural and no side effects!", product: "Diabetic Care Capsule" },
+  { name: "Anjali Mehta", location: "Vadodara", initial: "A", stars: 4, quote: "Pain Oil is simply amazing. Years of knee pain and just 2 weeks of using this oil gave me so much relief. I recommended it to my whole family.", product: "Ayurvedic Pain Oil" },
+  { name: "Suresh Kumar", location: "Rajkot", initial: "S", stars: 5, quote: "The Omega-3 capsules are high quality. My cholesterol has improved and my skin looks much better. The packaging is also very professional.", product: "Omega-3 Capsules" },
+  { name: "Heena Desai", location: "Mumbai", initial: "H", stars: 5, quote: "Ordered the Immunity Booster Kit and the delivery was fast. All products are genuine. The Shilajit is very authentic — you can tell by the smell and texture.", product: "Immunity Booster Kit" },
+  { name: "Vijay Solanki", location: "Gandhinagar", initial: "V", stars: 4, quote: "Triphala Churna from Advance Tatva is the best I have tried. Proper digestion improvement within a week. Highly recommended for anyone with gut issues.", product: "Triphala Churna" }
+];
+
+// ─── RENDER PRODUCTS ───
+let cart = 0;
+function renderProducts() {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => `
+    <div class="product-card reveal" onclick="openModal(${p.id})">
+      <div class="product-badge ${p.badge==='New'?'new':''}">${p.badge}</div>
+      <button class="product-wishlist" onclick="event.stopPropagation();wishlist(this)">🤍</button>
+      <div class="product-img">${p.icon}</div>
+      <div class="product-body">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-benefits">
+          ${p.benefits.slice(0,3).map(b=>`<span class="benefit-tag">${b}</span>`).join('')}
+        </div>
+        <div class="product-rating">
+          <div class="stars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</div>
+          <span class="rating-text">${p.rating} (${p.reviews} reviews)</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">
+            <div class="price-old">₹${p.oldPrice.toLocaleString()}</div>
+            <div class="price-new">₹${p.newPrice.toLocaleString()}</div>
+            <div class="price-save">Save ₹${(p.oldPrice-p.newPrice).toLocaleString()}</div>
+          </div>
+          <button class="add-cart-btn" onclick="event.stopPropagation();addToCart('${p.name}')">🛒 Add</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  initReveal();
+}
+
+// ─── RENDER TESTIMONIALS ───
+function renderTestimonials() {
+  const grid = document.getElementById('testimonialsGrid');
+  grid.innerHTML = testimonials.map(t => `
+    <div class="testimonial-card reveal">
+      <div class="t-header">
+        <div class="t-avatar">${t.initial}</div>
+        <div><div class="t-name">${t.name}</div><div class="t-location">📍 ${t.location}</div></div>
+      </div>
+      <div class="t-stars">${'★'.repeat(t.stars)}</div>
+      <div class="t-quote">"${t.quote}"</div>
+      <div class="t-product">✓ Verified Purchase · ${t.product}</div>
+    </div>
+  `).join('');
+  initReveal();
+}
+
+// ─── CART ───
+function addToCart(name) {
+  cart++;
+  document.getElementById('cartCount').textContent = cart;
+  showToast(`✓ ${name} added to cart!`);
+}
+function toggleCart() {
+  window.open('https://wa.me/919033246038?text=Hello%2C%20I%20want%20to%20order%20from%20Advance%20Tatva.', '_blank');
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── WISHLIST ───
+function wishlist(btn) {
+  btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+}
+
+// ─── MODAL ───
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  document.getElementById('modalImg').textContent = p.icon;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalPrice').innerHTML = `<span>₹${p.oldPrice}</span>₹${p.newPrice} <small style="font-size:13px;color:var(--herb);font-weight:600;margin-left:8px;">Save ₹${p.oldPrice-p.newPrice}</small>`;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalBenefits').innerHTML = p.benefits.map(b=>`<li>${b}</li>`).join('');
+  document.getElementById('modalAddBtn').onclick = () => { addToCart(p.name); closeModalBtn(); };
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalBtn();
+}
+function closeModalBtn() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── SLIDER ───
+let currentSlide = 0;
+const totalSlides = 3;
+function goSlide(n) {
+  currentSlide = n;
+  document.getElementById('slidesTrack').style.transform = `translateX(-${n * 100}%)`;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === n));
+}
+function nextSlide() { goSlide((currentSlide + 1) % totalSlides); }
+function prevSlide() { goSlide((currentSlide - 1 + totalSlides) % totalSlides); }
+setInterval(nextSlide, 5500);
+
+// ─── MOBILE NAV ───
+function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow=''; }
+
+// ─── SCROLL REVEAL ───
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// ─── COUNTER ANIMATION ───
+function animateCounters() {
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const target = +el.dataset.target;
+    const suffix = target >= 1000 ? '+' : '+';
+    let count = 0;
+    const step = target / 60;
+    const timer = setInterval(() => {
+      count = Math.min(count + step, target);
+      el.textContent = Math.floor(count).toLocaleString() + suffix;
+      if (count >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+const statsObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) { animateCounters(); statsObs.disconnect(); }
+}, { threshold: 0.3 });
+statsObs.observe(document.querySelector('.stats-bar'));
+
+// ─── INIT ───
+renderProducts();
+renderTestimonials();
+initReveal();
+</script>
+</body>
+</html>
